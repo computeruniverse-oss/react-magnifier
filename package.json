@@ -11,7 +11,8 @@
         "lib"
     ],
     "scripts": {
-        "build": "rollup -c",
+        "build": "yarn pretty && yarn lint && yarn package",
+        "package": "rollup -c",
         "pretty": "prettier --write --config .prettierrc.js src/**/*.{ts,tsx,scss,json}",
         "lint": "eslint --ext .tsx,.ts --fix --color \"./src/**/*.{ts,tsx,json}\""
     },

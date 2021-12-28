@@ -52,7 +52,7 @@ module.exports = {
         browser: true,
         node: true,
     },
-    ignorePatterns: ['**/*.test.{ts,tsx}', '*.js'],
+    ignorePatterns: ['**/*.test.{ts,tsx}', '*.js', 'examples/**/*'],
     settings: {
         'import/resolver': {
             typescript: {}, // this loads <rootdir>/tsconfig.json to eslint

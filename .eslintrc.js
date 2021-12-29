@@ -10,7 +10,6 @@ module.exports = {
         'plugin:jsx-a11y/recommended',
         'prettier',
     ],
-
     rules: {
         'import/order': [
             'error',
@@ -22,8 +21,16 @@ module.exports = {
                         group: 'external',
                         position: 'before',
                     },
-                    { pattern: '@*', group: 'external', position: 'after' },
-                    { pattern: '@*/**', group: 'external', position: 'after' },
+                    {
+                        pattern: '@*',
+                        group: 'external',
+                        position: 'after',
+                    },
+                    {
+                        pattern: '@*/**',
+                        group: 'external',
+                        position: 'after',
+                    },
                 ],
                 pathGroupsExcludedImportTypes: ['react'],
                 'newlines-between': 'always',
@@ -52,7 +59,7 @@ module.exports = {
         browser: true,
         node: true,
     },
-    ignorePatterns: ['**/*.test.{ts,tsx}', '*.js', 'examples/**/*'],
+    ignorePatterns: ['**/*.test.{ts,tsx}', '*.js', 'stories/**/*'],
     settings: {
         'import/resolver': {
             typescript: {}, // this loads <rootdir>/tsconfig.json to eslint

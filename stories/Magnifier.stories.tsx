@@ -15,7 +15,7 @@ export const Basic = () => {
             zoomImgWidth={1000}
             offsetLeft={10}
         >
-            <img src={'https://picsum.photos/id/190/400/400'} height={400} width={400} alt="Lorem picsum" />
+            <img src={'https://picsum.photos/id/190/400/400'} height={400} width={400} alt="Lorem picsum " />
         </Magnifier>
     );
 };

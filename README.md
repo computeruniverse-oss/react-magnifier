@@ -56,7 +56,7 @@ Requirements: Node.js, Yarn
 2. Install all dependencies: yarn install
 3. Start storybook `yarn storybook` so that you have a place where you can test your stuff.
 
-# Contributing
+## Contributing
 Suggestions and contributions are always welcome! Please first discuss changes via issue before submitting a pull request.
 
 

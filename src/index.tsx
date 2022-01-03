@@ -30,8 +30,18 @@ function calcImagePosition(
     zoomImgHeight: number,
     zoomImgWidth: number,
 ) {
-    const lensPositionTop = calcLensPosition(lens.height, mousePosition?.pageY, domRect?.height, domRect?.top);
-    const lensPositionLeft = calcLensPosition(lens.width, mousePosition?.pageX, domRect?.width, domRect?.left);
+    const lensPositionTop = calcLensPosition(
+        lens.height,
+        mousePosition?.pageY,
+        domRect?.height,
+        (domRect?.top || 0) + (window?.pageYOffset || 0),
+    );
+    const lensPositionLeft = calcLensPosition(
+        lens.width,
+        mousePosition?.pageX,
+        domRect?.width,
+        (domRect?.left || 0) + (window?.pageXOffset || 0),
+    );
 
     const y = (lensPositionTop / (domRect?.height || 1)) * zoomImgHeight;
     const x = (lensPositionLeft / (domRect?.width || 1)) * zoomImgWidth;
@@ -60,9 +70,18 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
     useEffect(() => {
         if (imageHolderRef && imageHolderRef.current) {
             const imageElement = imageHolderRef.current?.querySelector<HTMLImageElement>('img');
-            setDomRect(imageElement?.getBoundingClientRect());
+            const newDomRect: DOMRect | undefined = imageElement?.getBoundingClientRect();
+
+            if (
+                domRect?.top !== newDomRect?.top ||
+                domRect?.left !== newDomRect?.left ||
+                domRect?.width !== newDomRect?.width ||
+                domRect?.height !== newDomRect?.height
+            ) {
+                setDomRect(newDomRect);
+            }
         }
-    }, [zoomImg, children]);
+    });
 
     const imageElement = imageHolderRef.current?.querySelector<HTMLImageElement>('img');
 
@@ -80,8 +99,18 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
     );
 
     // get position to display the lens
-    const lensPositionTop = calcLensPosition(lensHeight, mousePosition?.pageY, domRect?.height, domRect?.top);
-    const lensPositionLeft = calcLensPosition(lensWidth, mousePosition?.pageX, domRect?.width, domRect?.left);
+    const lensPositionTop = calcLensPosition(
+        lensHeight,
+        mousePosition?.pageY,
+        domRect?.height,
+        (domRect?.top || 0) + (window?.pageYOffset || 0),
+    );
+    const lensPositionLeft = calcLensPosition(
+        lensWidth,
+        mousePosition?.pageX,
+        domRect?.width,
+        (domRect?.left || 0) + (window?.pageXOffset || 0),
+    );
 
     return (
         <>
@@ -99,19 +128,22 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
                 }}
             >
                 <div style={{ opacity: showPortal ? '0.5' : '1' }}>{children}</div>
-                <div
-                    style={{
-                        position: 'absolute',
-                        background: 'scroll',
-                        backgroundImage: `url(${imageElement?.src})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: `-${lensPositionLeft}px -${lensPositionTop}px`,
-                        height: lensHeight,
-                        width: lensWidth,
-                        top: lensPositionTop,
-                        left: lensPositionLeft,
-                    }}
-                />
+                {showPortal && (
+                    <div
+                        style={{
+                            position: 'absolute',
+                            border: '1px solid grey',
+                            background: 'scroll',
+                            backgroundImage: `url(${imageElement?.src})`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: `-${lensPositionLeft}px -${lensPositionTop}px`,
+                            height: lensHeight,
+                            width: lensWidth,
+                            top: lensPositionTop,
+                            left: lensPositionLeft,
+                        }}
+                    />
+                )}
             </span>
             {showPortal && (
                 <MagnifierPortal>
@@ -124,8 +156,12 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
                             backgroundPosition: `-${backgroundPosition.x}px -${backgroundPosition.y}px`,
                             height: domRect?.height,
                             width: domRect?.width,
-                            top: (domRect?.top || 0) + (offsetTop || 0),
-                            left: (domRect?.left || 0) + (domRect?.width || 0) + (offsetLeft || 0),
+                            top: (window?.pageYOffset || 0) + (domRect?.top || 0) + (offsetTop || 0),
+                            left:
+                                (window?.pageXOffset || 0) +
+                                (domRect?.left || 0) +
+                                (domRect?.width || 0) +
+                                (offsetLeft || 0),
                         }}
                     />
                 </MagnifierPortal>

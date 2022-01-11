@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Magnifier from '../src';
+import Magnifier from '../src/MagnifierZoom';
 
 export default {
     title: 'Magnifier',

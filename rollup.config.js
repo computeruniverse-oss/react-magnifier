@@ -10,18 +10,16 @@ const packageJson = require('./package.json');
 
 export default [
     {
-        input: 'src/index.tsx',
+        input: ['src/index.tsx', 'src/MagnifierZoom.tsx', 'src/PinchZoom.tsx'],
         output: [
             {
-                file: packageJson.main,
+                dir: 'lib',
                 format: 'cjs',
-                sourcemap: true,
                 name: 'react-lib',
             },
             {
-                file: packageJson.module,
+                dir: 'lib/esm',
                 format: 'esm',
-                sourcemap: true,
             },
         ],
         plugins: [external(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), postcss(), terser()],
@@ -29,7 +27,6 @@ export default [
     {
         input: 'lib/esm/types/index.d.ts',
         output: [{ file: 'lib/index.d.ts', format: 'esm' }],
-        external: [/\.css$/],
         plugins: [dts()],
     },
 ];

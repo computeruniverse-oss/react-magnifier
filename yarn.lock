@@ -1566,6 +1566,7 @@ __metadata:
     "@babel/core": ^7.16.5
     "@mdx-js/react": ^1.6.22
     "@rollup/plugin-commonjs": ^21.0.1
+    "@rollup/plugin-multi-entry": ^4.1.0
     "@rollup/plugin-node-resolve": ^13.1.1
     "@rollup/plugin-typescript": ^8.3.0
     "@storybook/addon-actions": ^6.4.9
@@ -2029,6 +2030,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/plugin-multi-entry@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@rollup/plugin-multi-entry@npm:4.1.0"
+  dependencies:
+    "@rollup/plugin-virtual": ^2.0.3
+    matched: ^5.0.0
+  peerDependencies:
+    rollup: ^1.20.0 || ^2.0.0
+  checksum: ddcea0f802dea682bdcd5ddefaff4da4ee931470fb14ce43c9abc6c70cb89816cce602a6378bbc82c33221c6b6cd29e92a77620b96d93392c11055271748e7dd
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-node-resolve@npm:^13.1.1":
   version: 13.1.1
   resolution: "@rollup/plugin-node-resolve@npm:13.1.1"
@@ -2056,6 +2069,15 @@ __metadata:
     tslib: "*"
     typescript: ">=3.7.0"
   checksum: f8253a775389f29feadf639c2e04d87bddb4c30126b0d95b9e17bfffa2addad1b6275cb8dead40604348ea7ac0128fe4394413bc3b2129c4a545f93eb4585149
+  languageName: node
+  linkType: hard
+
+"@rollup/plugin-virtual@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@rollup/plugin-virtual@npm:2.0.3"
+  peerDependencies:
+    rollup: ^1.20.0||^2.0.0
+  checksum: 5a9f9a69ff0260e82e6241ff40ae3e2c6bb6c9d262e1767370a7f16ac9e325c8867207258ee8421bc86b79da8941539d75621fbaa45ea900d5d09bee0c93ee1e
   languageName: node
   linkType: hard
 
@@ -9621,6 +9643,16 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: dad5c6f427fbd184467a6233a04501007beb8b92f71dfefb859442f6d9872b5e8024381ef41a2874ab8226befe3a0f1043e25af3f9df78b4a86b1b7160910326
+  languageName: node
+  linkType: hard
+
+"matched@npm:^5.0.0":
+  version: 5.0.1
+  resolution: "matched@npm:5.0.1"
+  dependencies:
+    glob: ^7.1.6
+    picomatch: ^2.2.1
+  checksum: 65f8b3f0309f20809de35aa0b5c2da1ee84cd8e670c39ad3a78c4feab2aa3ebd9065e09d51e97b5ad4ceca9d7b0576f6a01d53112b40d40b455eb31a7ab0b156
   languageName: node
   linkType: hard
 

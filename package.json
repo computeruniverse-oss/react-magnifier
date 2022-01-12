@@ -59,5 +59,8 @@
     "peerDependencies": {
         "react": "^17.x",
         "react-dom": "^17.x"
+    },
+    "dependencies": {
+        "react-zoom-pan-pinch": "^2.1.3"
     }
 }

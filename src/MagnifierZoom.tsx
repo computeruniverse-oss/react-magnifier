@@ -30,17 +30,18 @@ function calcImagePosition(
     zoomImgHeight: number,
     zoomImgWidth: number,
 ) {
+    const isBrowser = typeof window != 'undefined';
     const lensPositionTop = calcLensPosition(
         lens.height,
         mousePosition?.pageY,
         domRect?.height,
-        (domRect?.top || 0) + (window?.pageYOffset || 0),
+        (domRect?.top || 0) + (isBrowser ? window.pageYOffset : 0),
     );
     const lensPositionLeft = calcLensPosition(
         lens.width,
         mousePosition?.pageX,
         domRect?.width,
-        (domRect?.left || 0) + (window?.pageXOffset || 0),
+        (domRect?.left || 0) + (isBrowser ? window.pageXOffset : 0),
     );
 
     const y = (lensPositionTop / (domRect?.height || 1)) * zoomImgHeight;
@@ -66,6 +67,7 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
     const [domRect, setDomRect] = useState<DOMRect>();
     const [mousePosition, setMousePosition] = useState<{ pageX: number; pageY: number } | null>(null);
     const imageHolderRef = useRef<HTMLDivElement>(null);
+    const isBrowser = typeof window != 'undefined';
 
     useEffect(() => {
         if (imageHolderRef && imageHolderRef.current) {
@@ -103,13 +105,13 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
         lensHeight,
         mousePosition?.pageY,
         domRect?.height,
-        (domRect?.top || 0) + (window?.pageYOffset || 0),
+        (domRect?.top || 0) + (isBrowser ? window.pageYOffset : 0),
     );
     const lensPositionLeft = calcLensPosition(
         lensWidth,
         mousePosition?.pageX,
         domRect?.width,
-        (domRect?.left || 0) + (window?.pageXOffset || 0),
+        (domRect?.left || 0) + (isBrowser ? window.pageXOffset : 0),
     );
 
     return (
@@ -156,9 +158,9 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
                             backgroundPosition: `-${backgroundPosition.x}px -${backgroundPosition.y}px`,
                             height: domRect?.height,
                             width: domRect?.width,
-                            top: (window?.pageYOffset || 0) + (domRect?.top || 0) + (offsetTop || 0),
+                            top: (isBrowser ? window.pageYOffset : 0) + (domRect?.top || 0) + (offsetTop || 0),
                             left:
-                                (window?.pageXOffset || 0) +
+                                (isBrowser ? window.pageXOffset : 0) +
                                 (domRect?.left || 0) +
                                 (domRect?.width || 0) +
                                 (offsetLeft || 0),

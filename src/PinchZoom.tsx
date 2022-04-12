@@ -3,9 +3,10 @@ import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 interface IProps {
     zoomImg: string;
+    alt?: string;
 }
 
-const PinchZoom: FC<IProps> = ({ children, zoomImg }) => {
+const PinchZoom: FC<IProps> = ({ children, zoomImg, alt }) => {
     const [domRect, setDomRect] = useState<DOMRect>();
     const [loadZoomImg, setLoadZoomImg] = useState(false);
     const [hideOriginalImg, setHideOriginalImg] = useState(false);
@@ -50,7 +51,7 @@ const PinchZoom: FC<IProps> = ({ children, zoomImg }) => {
                             onWheelStart={hideOriginalImgWrapper}
                         >
                             <TransformComponent>
-                                <img src={zoomImg} alt="test" height={domRect?.height} width={domRect?.width} />
+                                <img src={zoomImg} alt={alt} height={domRect?.height} width={domRect?.width} />
                             </TransformComponent>
                         </TransformWrapper>
                     </div>

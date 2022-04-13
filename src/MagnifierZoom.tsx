@@ -150,9 +150,9 @@ const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, z
             {showPortal && (
                 <MagnifierPortal>
                     <div
+                        className={'magnifier-zoom-portal'}
                         style={{
                             position: 'absolute',
-                            border: '1px solid black',
                             backgroundImage: `url(${zoomImg})`,
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: `-${backgroundPosition.x}px -${backgroundPosition.y}px`,

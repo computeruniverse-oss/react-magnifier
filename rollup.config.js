@@ -27,7 +27,7 @@ export default [
         plugins: [external(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), postcss(), terser()],
     },
     {
-        input: 'lib/esm/types/index.d.ts',
+        input: 'lib/esm/index.d.ts',
         output: [{ file: 'lib/index.d.ts', format: 'esm' }],
         external: [/\.css$/],
         plugins: [dts()],

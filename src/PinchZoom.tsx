@@ -1,4 +1,4 @@
-import React, { cloneElement, FC, ReactElement, useEffect, useRef, useState } from 'react';
+import React, { cloneElement, FC, PropsWithChildren, ReactElement, useEffect, useRef, useState } from 'react';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 
 interface IProps {
@@ -6,7 +6,7 @@ interface IProps {
     alt?: string;
 }
 
-const PinchZoom: FC<IProps> = ({ children, zoomImg, alt }) => {
+const PinchZoom: FC<PropsWithChildren<IProps>> = ({ children, zoomImg, alt }) => {
     const [domRect, setDomRect] = useState<DOMRect>();
     const [loadZoomImg, setLoadZoomImg] = useState(false);
     const [hideOriginalImg, setHideOriginalImg] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, FC } from 'react';
+import React, { useEffect, useRef, useState, FC, PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
     offsetLeft?: number;
 }
 
-const MagnifierPortal: FC = ({ children }): React.ReactPortal => {
+const MagnifierPortal: FC<PropsWithChildren> = ({ children }): React.ReactPortal => {
     const container = useRef(document.createElement('div'));
 
     useEffect(() => {
@@ -62,7 +62,14 @@ const calcLensPosition = (lensLength: number, mousePosition = 0, domRectValue = 
     return position;
 };
 
-const Magnifier: FC<IProps> = ({ zoomImg, offsetLeft, offsetTop, zoomImgWidth, zoomImgHeight, children }) => {
+const Magnifier: FC<PropsWithChildren<IProps>> = ({
+    zoomImg,
+    offsetLeft,
+    offsetTop,
+    zoomImgWidth,
+    zoomImgHeight,
+    children,
+}) => {
     const [showPortal, setShowPortal] = useState(false);
     const [domRect, setDomRect] = useState<DOMRect>();
     const [mousePosition, setMousePosition] = useState<{ pageX: number; pageY: number } | null>(null);

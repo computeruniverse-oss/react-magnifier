@@ -38,6 +38,8 @@
         "@storybook/addon-essentials": "^6.4.9",
         "@storybook/addon-links": "^6.4.9",
         "@storybook/react": "^6.4.9",
+        "@types/react": "^18.0.25",
+        "@types/react-dom": "^18.0.9",
         "@typescript-eslint/eslint-plugin": "^5.8.1",
         "@typescript-eslint/parser": "^5.8.1",
         "babel-loader": "^8.2.3",
@@ -49,8 +51,8 @@
         "eslint-plugin-react-hooks": "^4.3.0",
         "eslint-plugin-storybook": "^0.5.5",
         "prettier": "^2.5.1",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "rollup": "^2.62.0",
         "rollup-plugin-dts": "^4.1.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -58,8 +60,8 @@
         "rollup-plugin-terser": "^7.0.2"
     },
     "peerDependencies": {
-        "react": "^17.x",
-        "react-dom": "^17.x"
+        "react": "^18.x",
+        "react-dom": "^18.x"
     },
     "dependencies": {
         "react-zoom-pan-pinch": "^2.1.3"

@@ -60,3 +60,6 @@ Requirements: Node.js, Yarn
 Suggestions and contributions are always welcome! Please first discuss changes via issue before submitting a pull request.
 
 
+## Publish
+Since the packages moved to github we need to use the correct login command:
+`npm login --scope=@Computeruniverse --registry=https://npm.pkg.github.com`

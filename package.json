@@ -7,6 +7,9 @@
     "main": "lib/cjs/index.js",
     "module": "lib/esm/index.js",
     "types": "lib/index.d.ts",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "files": [
         "lib"
     ],
